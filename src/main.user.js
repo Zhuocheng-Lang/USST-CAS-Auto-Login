@@ -1,12 +1,13 @@
 // ==UserScript==
-// @name         USST CAS Auto Login
+// @name         USST Auto Login
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Automates login to the USST CAS authentication page by filling credentials and submitting the form.
+// @version      1.1
+// @description  A Tampermonkey user script for automatic login to Shanghai University of Science and Technology authentication pages.
+// @description  一个用于自动登录上海理工大学相关认证页面的 Tampermonkey 用户脚本。
 // @author       Zhuocheng Lang
 // @license      MIT
 // @icon         https://www.usst.edu.cn/_upload/tpl/00/40/64/template64/favicon.ico
-// @match        *://ids6.usst.edu.cn/*
+// @match        *://ids6.usst.edu.cn/authserver/*
 // @match        *://courses.usst.edu.cn/auth/*
 // @noframes
 // @grant        GM_log
