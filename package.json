@@ -16,7 +16,7 @@
     "author": "Zhuocheng Lang",
     "license": "MIT",
     "devDependencies": {
-        "eslint": "^8.57.0",
-        "eslint-plugin-userscripts": "^0.7.2"
+        "eslint": "^9.39.2",
+        "eslint-plugin-userscripts": "^0.5.6"
     }
 }
