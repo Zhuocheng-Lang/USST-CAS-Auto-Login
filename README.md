@@ -2,8 +2,6 @@
 
 一个用于自动登录上海理工大学 CAS 认证页面的 Tampermonkey 用户脚本。脚本会在登录页自动填充学号与密码，并模拟用户输入、点击登录；首次运行会弹出配置窗口，凭据仅保存在本地浏览器的 Tampermonkey 存储中。
 
-> 仅适配 USST 新版认证页：`https://ids6.usst.edu.cn/authserver/login`。
-
 ## 功能特性
 
 - 首次运行弹窗引导，设置学号、密码与延时；随时可从脚本菜单修改
@@ -16,7 +14,7 @@
 
 - 浏览器：Chrome / Edge / Firefox 等现代浏览器
 - 必需扩展：Tampermonkey（油猴）
-- 目标站点：`ids6.usst.edu.cn`
+- 目标站点：`ids6.usst.edu.cn` 和 `course.usst.edu.cn`
 
 ## 安装
 
@@ -28,7 +26,7 @@
 
    2.1. 自动安装
        - 通过 [Greasy Fork](https://update.greasyfork.org/scripts/552545/USST%20CAS%20Auto%20Login.user.js)
-   
+
    2.2. 手动安装
        - 点击浏览器右上角 Tampermonkey 图标 → 创建新脚本…
        - 删除编辑器中默认模板代码
@@ -37,7 +35,7 @@
 
 3. 首次使用
 
-    - 访问 `https://ids6.usst.edu.cn/authserver/login`
+    - 打开需要登录的网页
     - 页面加载后会弹出配置窗口：输入学号、密码，可按需调整延时 → 点击保存
     - 脚本将按配置自动填充并登录
 
@@ -107,4 +105,3 @@ Q: 能自动过验证码吗？
 ## 免责声明
 
 本脚本仅用于学习与效率提升，请遵守学校与网站的使用政策。使用本脚本造成的任何后果由使用者自行承担。
-
