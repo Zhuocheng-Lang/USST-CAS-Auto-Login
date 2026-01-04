@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         USST Auto Login
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2.0
 // @description  A Tampermonkey user script for automatic login to University of Shanghai for Science and Technology(USST) authentication pages.
 // @description:zh-cn  一个用于自动登录上海理工大学相关认证页面的 Tampermonkey 用户脚本。
 // @author       Zhuocheng Lang
