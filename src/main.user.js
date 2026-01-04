@@ -290,8 +290,9 @@
     /**
      * Generic auto login handler
      * @param {Object} options - Login configuration options
+     * @param {Object} config - User configuration (username, password, delays)
      */
-    async function performAutoLogin(options) {
+    async function performAutoLogin(options, config) {
         const {
             formSelector,
             usernameSelector,
@@ -302,8 +303,6 @@
 
         log(`Starting auto-login for ${siteName}...`);
 
-        // Get configuration
-        const config = await getConfig();
         if (!config) {
             log('No configuration found, exiting.');
             return;
@@ -357,27 +356,29 @@
 
     /**
      * Auto login function for CAS (ids6.usst.edu.cn)
+     * @param {Object} config - User configuration
      */
-    async function autoLoginCAS() {
+    async function autoLoginCAS(config) {
         await performAutoLogin({
             siteName: 'CAS',
             formSelector: '#casLoginForm',
             usernameSelector: '#username',
             passwordSelector: '#password'
-        });
+        }, config);
     }
 
     /**
      * Auto login function for Courses (courses.usst.edu.cn)
+     * @param {Object} config - User configuration
      */
-    async function autoLoginCourses() {
+    async function autoLoginCourses(config) {
         await performAutoLogin({
             siteName: 'Courses',
             formSelector: 'form',
             usernameSelector: 'input[name="userName"], #userName, input[type="text"]',
             passwordSelector: 'input[name="password"], #password, input[type="password"]',
             submitSelectors: ['.login-btn', 'button[type="submit"]']
-        });
+        }, config);
     }
 
     /**
@@ -528,16 +529,24 @@
      * @param {Function} loginFn - The login function to execute
      */
     async function startAutoLogin(loginFn) {
+        // Get configuration only once
         const config = await getConfig();
-        if (!config) return;
+        if (!config) {
+            log('配置获取失败或用户取消配置，自动登录已终止');
+            return;
+        }
 
+        log('配置已加载，准备开始自动登录');
         const startupDelay = config.startupDelay || 10;
         log(`Starting auto-login after ${startupDelay}ms delay...`);
 
+        // Pass config to login function to avoid calling getConfig() again
+        const executeLogin = () => loginFn(config);
+
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => setTimeout(loginFn, startupDelay));
+            document.addEventListener('DOMContentLoaded', () => setTimeout(executeLogin, startupDelay));
         } else {
-            setTimeout(loginFn, startupDelay);
+            setTimeout(executeLogin, startupDelay);
         }
     }
 
